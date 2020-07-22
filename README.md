@@ -192,20 +192,35 @@ https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zo
 在目录 ~/models/research/deeplab下执行
 
 python train.py \
+
 --logtostderr \
+
 --training_number_of_steps=300 \
+
 --train_split="train" \
+
 --model_variant="xception_65" \
+
 --atrous_rates=6 \
+
 --atrous_rates=12 \ 
+
 --atrous_rates=18 \
+
 --output_stride=16 \
+
 --decoder_output_stride=4 \ 
+
 --train_crop_size=321,321 \
+
 --train_batch_size=4 \
+
 --dataset="camvid" \
+
 --tf_initial_checkpoint='/home/(your user name)/models/research/deeplab/deeplabv3_cityscapes_train/model.ckpt' \
+
 --train_logdir='/home/(your user name)/models/research/deeplab/exp/camvid_train/train' \
+
 --dataset_dir='/home/(your user name)/dataset/CamVid/tfrecord'
 
 #About train_crop_size , = output_stride * k + 1, where k is an integer. For example, we have 321x321，513x513 .
@@ -213,25 +228,42 @@ python train.py \
 
 
 #测试结果可视化:
+
 在目录 ~/models/research/deeplab下执行
 
 python vis.py \
+
 --logtostderr \
+
 --vis_split="val" \
+
 --model_variant="xception_65" \ 
+
 --atrous_rates=6 \ 
+
 --atrous_rates=12 \ 
+
 --atrous_rates=18 \ 
+
 --output_stride=16 \ 
+
 --decoder_output_stride=4 \ 
+
 --vis_crop_size=360,480 \
+
 --dataset="camvid" \
+
 --colormap_type="pascal" \ 
+
 --checkpoint_dir='/home/(your user name)/models/research/deeplab/exp/camvid_train/train'\
+
 --vis_logdir='/home/(your user name)/models/research/deeplab/exp/camvid_train/vis' \ 
+
 --dataset_dir='/home/(your user name)/dataset/CamVid/tfrecord'
 
+
 #vis_split:设置为测试集
+
 vis_crop_size:设置360,480为图片的大小 dataset:设置为我们在data_generator.py文件设置的数据集名称 dataset_dir:设置为创建的TFRecord colormap_type:可视化标注的颜色 可到目录deeplab/exp/camvid_train/vis下查看可视化结果#
 
 
@@ -241,26 +273,42 @@ vis_crop_size:设置360,480为图片的大小 dataset:设置为我们在data_gen
 在目录 ~/models/research/deeplab下执行
 
 python eval.py \ 
+
 --logtostderr \
+
 --eval_split="val" \
+
 --model_variant="xception_65" \
+
 --atrous_rates=6 \
+
 --atrous_rates=12 \
+
 --atrous_rates=18 \
+
 --output_stride=16 \
+
 --decoder_output_stride=4 \
+
 --eval_crop_size=360,480 \
+
 --dataset="camvid" \ 
+
 --checkpoint_dir='/home/bai/models/research/deeplab/exp/camvid_train/train'\
+
 --eval_logdir='/home/bai/models/research/deeplab/exp/camvid_train/eval' \ 
+
 --dataset_dir='/home/bai/dataset/CamVid/tfrecord' \ 
+
 --max_number_of_evaluations=1
+
 
 
 #eval_split:设置为测试集 crop_size:同样设置为360和480 dataset:设置为camvid dataset_dir:设置为我们创建的数据集
 
 
 查看mIoU值:
+
 tensorboard --logdir /home/user/models/research/deeplab/exp/camvid_train/eval 查看训练过程的loss:
 
 tensorboard --logdir /home/user/models/research/deeplab/exp/camvid_train/train
