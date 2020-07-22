@@ -294,11 +294,11 @@ python eval.py \
 
 --dataset="camvid" \ 
 
---checkpoint_dir='/home/bai/models/research/deeplab/exp/camvid_train/train'\
+--checkpoint_dir='/home/user/models/research/deeplab/exp/camvid_train/train'\
 
---eval_logdir='/home/bai/models/research/deeplab/exp/camvid_train/eval' \ 
+--eval_logdir='/home/user/models/research/deeplab/exp/camvid_train/eval' \ 
 
---dataset_dir='/home/bai/dataset/CamVid/tfrecord' \ 
+--dataset_dir='/home/user/dataset/CamVid/tfrecord' \ 
 
 --max_number_of_evaluations=1
 
