@@ -92,10 +92,15 @@ val.txt:所有测试集的文件名称
 2)pwd :/home/(your user name)/models/research/deeplab/datasets
 
 python build_voc2012_data.py \ 
+
 --image_folder="/home/bai/dataset/CamVid/image" \ 
+
 --semantic_segmentation_folder="/home/bai/dataset/CamVid/mask" \ 
+
 --list_folder="/home/(your user name)/dataset/CamVid/index" \ 
+
 --image_format="png" \ 
+
 --output_dir="/home/(your user name)/dataset/CamVid/tfrecord"
 
 image_folder :数据集中原输入数据的文件目录地址 
@@ -122,12 +127,19 @@ train_utils.py
 在datasets/data_generator.py文件中，添加camvid数据集描述:
 
 _CAMVID_INFORMATION = DatasetDescriptor(
+
     splits_to_sizes={
+    
         'train': 367,  # num of samples in images/training
+        
         'val': 101,  # num of samples in images/validation
+        
     },
+    
     num_classes=12, #camvid have 11 classes,add ignore_label = 12.
+    
     ignore_label=255,
+    
 )
 
 #注册数据集 同时在datasets/data_generator.py文件，添加对应数据集的名称:
@@ -250,6 +262,7 @@ python eval.py \
 
 查看mIoU值:
 tensorboard --logdir /home/user/models/research/deeplab/exp/camvid_train/eval 查看训练过程的loss:
+
 tensorboard --logdir /home/user/models/research/deeplab/exp/camvid_train/train
 
 
